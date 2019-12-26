@@ -1,5 +1,6 @@
-var arr = [1, 2, 5, 6];
-var count = 13;
+// var arr = [186,419,83,408];
+var arr =  [1,83, 186, 408, 419]
+var count = 6249;
 const getCoins = (arr, count) => {
 
   let i = arr.length - 1;
@@ -18,4 +19,5 @@ const getCoins = (arr, count) => {
   }
   return res
 }
-getCoins(arr, count);
+let res = getCoins(arr, count);
+console.log(res);

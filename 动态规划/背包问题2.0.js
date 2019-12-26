@@ -43,11 +43,15 @@ function findValue(w, val, capacity, n, T) {
 // w = [2,3,4].  val = [3,4,5] , n = 3 , capacity = 5
 //function knapSack([2,3,4],[3,4,5],5,3);
 // 
-var values = [4, 5, 13, 12],
-  weights = [1, 2, 4, 5],
-  capacity = 6,
-  n = values.length;
+// var values = [4, 5, 13, 12],
+//   weights = [1, 2, 4, 5],
+//   capacity = 6,
+//   n = values.length;
 
+var values = [50, 140, 60, 60];
+var weights = [5, 20, 10, 12];
+var capacity = 30;
+var n = values.length
 console.log(knapSack(weights, values, capacity, n));
 
 
