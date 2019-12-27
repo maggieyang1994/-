@@ -31,20 +31,22 @@
     }
 
     .monitor .monitorInner {
-      
+
       font-size: 24px;
       position: absolute;
       right: 0;
       bottom: 0;
       width: 100%
     }
-    .monitor .history{
+
+    .monitor .history {
       font-size: 14px;
       position: absolute;
       right: 0;
       top: 0;
       width: 100%
     }
+
     .pannel {
       width: 100%;
       height: 80%;
@@ -65,10 +67,10 @@
 <body>
   <div class="wrapper" id="app">
     <div class="monitor">
-      
-        <p class="history">{{history}}</p>
-        <p class="monitorInner"> {{monitor}}</p>
-      
+
+      <p class="history">{{history}}</p>
+      <p class="monitorInner"> {{monitor}}</p>
+
     </div>
     <div class="pannel">
       <span @click="handleClick($event,item)" v-for="(item, index) in operatorData" :key="index"
@@ -102,7 +104,8 @@
               this.history = ''
             } else {
               this.monitor = item.callback(this.monitor);
-              this.history = this.history.replace(/[\d|\.]$/, this.monitor)
+              // this.history = this.history.replace(/\d+$/, this.monitor)
+              this.history = this.history.replace(/[\d\.-]+$/, this.monitor)
             }
           } else if (item.label === '=') {
             // 计算
@@ -115,7 +118,7 @@
           }
         }
         else {
-          if(item.label === '.' && String(this.monitor).indexOf('.') !== -1) return;
+          if (item.label === '.' && String(this.monitor).indexOf('.') !== -1) return;
           this.monitor = this.monitor === 0 || !this.history ? item.label : this.monitor + item.label + '';
           this.history += item.label
         }
