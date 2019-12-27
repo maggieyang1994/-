@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>两边固宽 中间自适应且优先渲染</title>
+  <style>
+    .wrapper {
+      overflow: hidden;
+    }
+
+    .innerWrapper {
+      width: 100%;
+      background-color: red;
+      float: left
+    }
+
+    .center {
+      padding-left: 100px
+    }
+
+    .left {
+      width: 100px;
+      margin-left: -100%;
+      background-color: yellow;
+      float: left
+    }
+
+    .right {
+      margin-left: -100px;
+      width: 100px;
+      background-color: blue;
+      float: left
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="innerWrapper">
+      <!--  center 的内容要显示  所以需要外层容器width:100%  内层Padding -->
+      <div class="center">center</div>
+    </div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+</body>
+
+</html>
