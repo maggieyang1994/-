@@ -1,4 +1,4 @@
-var arr = [1, 2];
+var arr = [1, 2,3,1];
 const theif = (arr) => {
   var res = []
   for (var i = 0; i < arr.length; i++) {
