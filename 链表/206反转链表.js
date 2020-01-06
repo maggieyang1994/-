@@ -10,17 +10,19 @@
  * @return {ListNode}
  */
 
+ // 迭代
 var reverseList = function (head) {
-  let pre = null
+  let temp = null
   while(head){
-    let temp = head.val;
-    temp.next = pre;
-    head = head.next;
-    pre = temp
+    temp = {
+      val: head.val, 
+      next: temp
+    };
+    head = head.next
   }
-  return pre
+  return temp;
 };
-
+// 递归
 
 var head = {
   val: 1,
