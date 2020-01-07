@@ -10,12 +10,12 @@
  * @return {ListNode}
  */
 
- // 迭代
+// 迭代
 var reverseList = function (head) {
   let temp = null
-  while(head){
+  while (head) {
     temp = {
-      val: head.val, 
+      val: head.val,
       next: temp
     };
     head = head.next
@@ -23,6 +23,18 @@ var reverseList = function (head) {
   return temp;
 };
 // 递归
+const reverseList1 = (head) => {
+  if (!head || !head.next) return head;
+  let res = reverseList1(head.next);
+  // 出栈的顺序 与入栈的顺序相反
+  console.log(head, res);
+  // res.va
+  let n1 = head.next;
+  n1.next = head;
+  head.next = null;
+  console.log(res);
+  return res;
+}
 
 var head = {
   val: 1,
@@ -37,5 +49,5 @@ var head = {
     }
   }
 }
-let res = reverseList(head);
+let res = reverseList1(head);
 console.log(res)

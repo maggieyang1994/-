@@ -43,21 +43,30 @@ var tree = {
 // 左 ->  根 -> 右
 // 2 3 4 8 9 9 10 13 18 21
 // 递归
-const middle = (list) => {
+const middle = (list, res = []) => {
   if (list.left) middle(list.left);
-  console.log(list.node);
-  if (list.right) middle(list.right)
+  res.push(list.node)
+  if (list.right) middle(list.right);
+  return res
 }
-middle(tree)
+var res = middle(tree);
+console.log(res)
 // 迭代
 
-const middleP = (list) => {
-  let res = [];
-  let stack = [list]
-  while (stack.length) {
-    
+const middleP = (node) => {
+  let stack = [];
+  let res = []
+  while (stack.length || node) {
+    if (node) {
+      stack.push(node);
+      node = node.left
+    } else {
+      let temp = stack.pop();
+      res.push(temp.node);
+      node = temp.right
+    }
   }
   return res
 }
-var res = middleP(tree);
-console.log(res)
+// var res = middleP(tree);
+// console.log(res)
