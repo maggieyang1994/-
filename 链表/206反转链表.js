@@ -37,17 +37,20 @@ const reverseList1 = (head) => {
 }
 
 var head = {
-  val: 1,
+  val: 4,
   next: {
-    val: 2,
+    val: 3,
     next: {
-      val: 3,
+      val: 1,
       next: {
-        val: 4,
-        next: null
+        val: 2,
+        next: {
+          val: 3,
+          next: null
+        }
       }
+
     }
   }
+
 }
-let res = reverseList1(head);
-console.log(res)

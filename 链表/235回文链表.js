@@ -15,9 +15,10 @@ var head = {
   next: {
     val: 2,
     next: {
-      val: 3,
+      val: 2,
       next: {
-        val: 2,
+        val: 1,
+        // next: null
         next: {
           val: 1,
           next: null
@@ -27,17 +28,22 @@ var head = {
   }
 }
 var isPalindrome = function (head) {
-  if(!head) return false;
-  let temp = null;
-  let tempH = head
-  while(head){
-    temp = {
-      val: head.val, 
-      next: temp
-    };
-    head = head.next
+  // 找到中间元素 依次入栈 再比较
+  let fast = head;
+  let slow = head;
+  let stack = [];
+  while (fast) {
+    stack.push(slow.val);
+    if(!fast.next) stack.pop()
+    fast = fast.next && fast.next.next;
+    slow = slow.next
   }
-  
+  while(stack.length){
+    if(stack.pop()!== slow.val) return false;
+    slow = slow.next
+  }
+  return true
+
 };
 let res = isPalindrome([]);
 console.log(res)
