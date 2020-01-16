@@ -92,8 +92,8 @@ const deleteNode = (list, val) => {
   }
   return list
 }
-var res = deleteNode(list, 4)
-console.log(res);
+// var res = deleteNode(list, 4)
+// console.log(res);
 
 // 返回链表的倒数第几个节点
 // 倒数第三个节点 3
@@ -120,11 +120,18 @@ findKthToTail(list, 9);
 // •  将倒数第 K+1 结点的的后继结点设置为 null
 // •  将 head 的后继结点设置为以上所得的倒数第 K 个结点，将原尾结点的后继结点设置为原 head 的后继结点
 const reversedKthToTail = (list, k) => {
-  let after = findKthToTail(list, k + 1);
-  let knode = after.next;
-  let headNext = list.next;
-  after.next = null;
-  head.next = afater
+  let kPreNode = findKthToTail(list, k + 1);
+  // 1
+  let after = kPreNode.next;
+  // 2
+  kPreNode.next = null;
+  let tmp = after;
+  // 3
+  while(tmp.next){
+    tmp = tmp.next
+  }
+  tmp.next = list;
+  console.log(after)
 }
-reversedKthToTail(list, 2);
+reversedKthToTail(list, 4);
 

@@ -39,31 +39,26 @@ var tree = {
     }
   }
 }
-const breadthTraversal = (node) => {
-  let res = [];
-  let stack = [node]
-  if (node) {
-    while (stack.length) {
-      let temp = stack.shift()
-      res.push(temp.node);
-      if (temp.left) stack.push(temp.left)
-      if (temp.right) stack.push(temp.right)
-    }
-    return res
+
+const digui = (tree, res = []) => {
+  if (tree) {
+    res.push(tree.node);
+    if (tree.left) digui(tree.left, res)
+    if (tree.right) digui(tree.right, res)
   }
+  return res
 }
-var res = breadthTraversal(tree);
-console.log(res)
+// console.log(digui(tree))
 
-
-// 10 
-// 3  18
-// 18 2 4
-// 2 4 13 21
-// 4 13 21 
-// 13 21 9
-// 21 9
-// 9
-// 8 9
-// 9
+const noDigui = (tree, res = []) => {
+  let stack = [tree];
+  while(stack.length){
+    let temp = stack.pop();
+    res.push(temp.node);
+    if(temp.right) stack.push(temp.right)
+    if(temp.left) stack.push(temp.left)
+  }
+  return res
+}
+console.log(noDigui(tree))
 

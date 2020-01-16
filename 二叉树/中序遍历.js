@@ -5,7 +5,11 @@ var tree = {
     left: {
       node: 2,
       left: null,
-      right: null
+      right: {
+        node: 33,
+        left: null,
+        right: null
+      }
     },
     right: {
       node: 4,
@@ -70,3 +74,22 @@ const middleP = (node) => {
 }
 // var res = middleP(tree);
 // console.log(res)
+
+// 栈 和 指针 
+const noDigui = (node, res = []) =>{
+  let stack = [];
+  while(node || stack.length){
+    if(node){
+      stack.push(node)
+      node = node.left
+    }else{
+      // 直到没有left　才开始出栈
+      let temp = stack.pop();
+      res.push(temp.node);
+      node = temp.right
+    }
+  }
+  return res
+}
+var res = noDigui(tree);
+console.log(res)

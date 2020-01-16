@@ -10,20 +10,19 @@ var tree = {
     right: {
       node: 4,
       left: null,
-      right: null
-      // {
-      //   node: 9,
-      //   left: {
-      //     node: 8,
-      //     left: null,
-      //     right: null
-      //   },
-      //   right: {
-      //     node: 9,
-      //     left: null,
-      //     right: null
-      //   }
-      // }
+      right: {
+        node: 9,
+        left: {
+          node: 8,
+          left: null,
+          right: null
+        },
+        right: {
+          node: 9,
+          left: null,
+          right: null
+        }
+      }
     }
   },
   right: {
@@ -43,24 +42,22 @@ var tree = {
 // 根的位置
 // 根 -> 左 -> 右
 // 10 3 2 4 9 8 9 18 13 21
-// 递归
+// 递归  按照入栈顺序
 const preOrder = (list, res = []) => {
   if (list) {
     res.push(list.node);
-    console.log('left')
     if (list.left) preOrder(list.left, res)
-    console.log("right")
     if (list.right) preOrder(list.right, res)
   }
-  // console.log(res)
   return res
 }
-var res = preOrder(tree);
-console.log(res);
+// var res = preOrder(tree);
+// console.log(res);
 // 递归的入栈顺序
 // [pre10 pre3 pre2 ]
 
 const preOrderP = (list) => {
+  if(!list) return []
   let res = [];
   let stack = [list]
   while (stack.length) {
@@ -71,8 +68,13 @@ const preOrderP = (list) => {
   }
   return res
 }
-// var res = preOrderP(tree);
-// console.log(res);
+// 10
+// 18 3
+// 18 4 2
+// 18 4 
+
+var res = preOrderP(tree);
+console.log(res);
 
 const digui = (n = 1) => {
   console.log('before', n)
@@ -100,6 +102,6 @@ const f = (n) => {
 }
 // 尾调用，是指函数内部的最后一个动作是函数调用。该调用的返回值，直接返回给函数
 const f1 = (n, res = 1) => {
-  if(n == 1) return res;
-  return f(n-1, n * res)
+  if (n == 1) return res;
+  return f(n - 1, n * res)
 }

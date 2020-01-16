@@ -11,7 +11,7 @@ var tree = {
       node: 4,
       left: null,
       right: {
-        node: 9,
+        node: 7,
         left: {
           node: 8,
           left: null,
@@ -71,6 +71,7 @@ var postOrderUnRec = function (node) {
   }
 }
 var posOrderUnRecur = function (node) {
+  let res = []
   if (node) {
     var s1 = []
     var s2 = []
@@ -86,9 +87,37 @@ var posOrderUnRecur = function (node) {
       }
     }
     while (s2.length !== 0) {
-      console.log(s2.pop().value);
+      res.push(s2.pop().value);
     }
+    return res
   }
 }
-posOrderUnRecur(tree)
-postOrderUnRec(tree)
+// posOrderUnRecur(tree)
+// postOrderUnRec(tree)
+const noDigui = (node) => {
+  let stack = [];
+  // let temp = null;
+  let res = []
+  while (node || stack.length) {
+    if (node) {
+      stack.push(node);
+      pre = node;
+      node = node.left
+    } else {
+      // 如果没有left 了
+      // 看是否有right
+      var temp = stack[stack.length - 1];
+      if (temp.right) {
+        node = temp.right
+      } else {
+        console.log(temp.node)
+        res.push(temp.node);
+        stack.pop();
+        node = stack[stack.length - 1].right
+      }
+    }
+  }
+  return res
+}
+var res = noDigui(tree);
+console.log(res)

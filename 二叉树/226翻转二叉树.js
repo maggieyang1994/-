@@ -1,3 +1,14 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
 var tree = {
   node: 10,
   left: {
@@ -5,7 +16,11 @@ var tree = {
     left: {
       node: 2,
       left: null,
-      right: null
+      right: {
+        node: 33,
+        left: null,
+        right: null
+      }
     },
     right: {
       node: 4,
@@ -39,31 +54,15 @@ var tree = {
     }
   }
 }
-const breadthTraversal = (node) => {
-  let res = [];
-  let stack = [node]
-  if (node) {
-    while (stack.length) {
-      let temp = stack.shift()
-      res.push(temp.node);
-      if (temp.left) stack.push(temp.left)
-      if (temp.right) stack.push(temp.right)
+var invertTree = function(root) {
+  if(!root) return null
+  if(root){
+    return {
+      val: root.node, 
+      left: invertTree(root.right),
+      right: invertTree(root.left)
     }
-    return res
   }
-}
-var res = breadthTraversal(tree);
+};
+var res = invertTree(tree);
 console.log(res)
-
-
-// 10 
-// 3  18
-// 18 2 4
-// 2 4 13 21
-// 4 13 21 
-// 13 21 9
-// 21 9
-// 9
-// 8 9
-// 9
-
