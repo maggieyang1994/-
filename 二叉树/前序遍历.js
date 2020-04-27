@@ -57,7 +57,7 @@ const preOrder = (list, res = []) => {
 // [pre10 pre3 pre2 ]
 
 const preOrderP = (list) => {
-  if(!list) return []
+  if (!list) return []
   let res = [];
   let stack = [list]
   while (stack.length) {
@@ -81,6 +81,7 @@ const digui = (n = 1) => {
   if (n < 5) digui(++n);
   console.log('after', n)
 }
+
 // digui();
 
 const fib = (n) => {
@@ -105,3 +106,52 @@ const f1 = (n, res = 1) => {
   if (n == 1) return res;
   return f(n - 1, n * res)
 }
+
+var resArr = []
+const feidiguibefore = (tree) => {
+  if (!tree) return
+  else {
+    let stack = [tree];
+    while (stack.length) {
+      let current = stack.pop();
+      resArr.push(current.node);
+      if (current.right) stack.push(current.right)
+      if (current.left) stack.push(current.left)
+    }
+  }
+}
+feidiguibefore(tree);
+console.log(resArr)
+
+// 中 非递归
+const feidiguimiddle = (tree) => {
+  let res = []
+  if (!tree) return
+  else {
+    let stack = [tree];
+    let node = tree.left;
+    while(stack.length || node){
+      if(node){
+        stack.push(node);
+        node = node.left
+      }else{
+        // 开始出栈
+        let temp = stack.pop();
+        res.push(temp.node);
+        node = temp.right
+      }
+    }
+    return res
+  }
+}
+console.log(feidiguimiddle(tree))
+
+const feidiguiafter = (tree) => {
+  let res = []
+  if (!tree) return
+  else {
+    
+  }
+}
+
+

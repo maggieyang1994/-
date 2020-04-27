@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .item {
+      height: 100px;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <ul v-scroll="handleScroll">
+        <li v-for="item in list" v-bind:key="item.id" class="item">
+          {{item.name}}
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  const debouce = (fn) => {
+  let timer;
+  return function () {
+    if(timer) clearTimeout(timer)
+    timer = setTimeout(() => {
+      fn();
+      timer = null
+    }, 2000)
+  }
+} 
+  Vue.directive("scroll", {
+    inserted: function (el, binding) {
+      let f = function (evt) {
+        if (binding.value(evt, el)) {
+          window.removeEventListener("scroll", f);
+        }
+      };
+      window.addEventListener("scroll", debouce(f));
+    },
+  });
+  new Vue({
+    el: "#app",
+    data() {
+      return {
+        list: Array.from({ length: 100 }, (v, i) => ({
+          name: `防抖demo演示${i}`,
+          id: i,
+        })),
+      };
+    },
+    methods: {
+      handleScroll(evt, el) {
+        console.log(evt, el);
+        if (window.scrollY > 50) {
+          el.setAttribute(
+            "style",
+            "opacity: 1; transform: translate3d(0, -10px, 0)"
+          );
+        }
+        return window.scrollY > 100;
+      },
+    },
+  });
+</script>

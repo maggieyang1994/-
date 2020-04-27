@@ -45,7 +45,7 @@ var root = {
   right: {
     val: 2,
     left: {
-      val: 4,
+      val: 5,
       left: null,
       right: null
     },
@@ -57,3 +57,11 @@ var root = {
   }
 }
 console.log(fn(root))
+const isSame = (left, right) => {
+  if(!left && !right) return true;
+  else if(!left || !right) return false;
+  else {
+    return left.val === right.val && isSame(left.right, right.left) && isSame(left.left, right.right)
+  }
+}
+console.log(isSame(root.left, root.right))

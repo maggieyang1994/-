@@ -41,3 +41,13 @@ var target = 14
 // var res1 = erfen1(arr, target);
 var res2 = erfen2(arr, target);
 console.log(res2)
+
+// 给定一个已经排好序的数组和一个目标值(假设一定存在)，在数组中找到目标值，返回其索引
+
+// 优化 斐波那契数列
+
+// 列举你遇到过的小程序兼容问题
+
+// 了解的小程序框架
+
+// 箭头函数与普通函数的区别 （this指向  arguments prototype）
