@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 双飞翼布局 中间先渲染 两边定宽 中间自适应 */
+      /* 三个都float left  center宽度百分百 left定宽 margin left负100% right定宽 margin left负宽度 */
+      /* 但是left把center的内容盖住了 所以内部要嵌套一个div padding left的宽 */
+      .wrapper{
+        overflow: hidden
+      }
+      .center {
+        width: 100%;
+        background-color: red;
+        /* padding-left: 100px; */
+        float: left;
+      }
+      .left {
+        width: 100px;
+        background-color: blue;
+        margin-left: -100%;
+        float: left;
+      }
+      .right {
+        width: 100px;
+        background-color: yellow;
+        margin-left: -100px;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="center">
+        <div style="padding-left:100px">center</div>
+      </div>
+      <div class="left">left</div>
+      <div class="right">right</div>
+    </div>
+  </body>
+</html>

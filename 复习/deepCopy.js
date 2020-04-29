@@ -22,7 +22,8 @@ const deepCopy = (original) => {
         for (let key in original) {
           let tempValue = original[key]
           if (copiedObj.get(tempValue)) {
-            return tempValue
+            console.log('======deepCopy', tempValue)
+            target[key] = target[copiedObj.get(tempValue)]
           } else {
             type(tempValue) === 'Object' && copiedObj.set(tempValue, key)
             target[key] = deepCopy(tempValue)
@@ -44,24 +45,27 @@ const deepCopy = (original) => {
     return target
   }
 }
+
 const type = (data) => {
   return Object.prototype.toString.call(data).split(" ")[1].replace(']', "")
 }
 
 
 // 循环引用
-var a = { a: 1 };
-var b = { b: 1 };
+var a = {};
+var b = {};
 a.b = b;
 b.a = a;
 var cloneA = deepCopy(a);
 console.log(cloneA)
 
 
-var obj1 = {a:1};
-var b = {b:1};
-obj1.b = b;
-obj1.c = b;
-console.log(obj1.b === obj1.c)
-let obj2 = deepCopy(obj1);
-console.log(obj2.b === obj2.c)
+// var obj1 = {};
+// var b = {b:1};
+// obj1.b = b;
+// obj1.c = b;
+// console.log(obj1.b === obj1.c)
+
+// let obj2 = deepCopy(obj1);
+
+// console.log(obj2.b === obj2.c)
