@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app" style="width: 100%; height: 500px;"></div>
+  </body>
+</html>
+<script
+  type="text/javascript"
+  src="https://webapi.amap.com/maps?v=1.4.15&key=651f51a67d2e3cdaaea1e63d784cec0a"
+></script>
+
+<script>
+  var map = new AMap.Map("app", {
+    resizeEnable: true,
+    zoom: 17,
+    viewMode: "3D",
+    center: [114.03201687283001, 22.52961046007],
+  });
+  map.setMapStyle(`amap://styles/black`);
+</script>

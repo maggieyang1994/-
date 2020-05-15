@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="test"></div>
+    <div class="tixing"></div>
+    <div class="sanjiao"></div>
+  </body>
+</html>
+<style>
+  .test {
+    width: 50px;
+    height: 50px;
+    border-top: 50px solid red;
+    border-bottom: 50px solid green;
+    border-left: 50px solid blue;
+    border-right: 50px solid yellow;
+  }
+
+  /* 然后把其他颜色设置成看不见的颜色，我们就得到了梯形 */
+  .tixing{
+    width: 50px;
+    height: 50px;
+    border-top: 50px solid red;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+  }
+  /* 三角形同理可得，只要把中间的正方形的宽高设为0就行 */
+  .sanjiao{
+    width: 0px;
+    height: 0px;
+    border-top: 50px solid red;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+  }
+</style>

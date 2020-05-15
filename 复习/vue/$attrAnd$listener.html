@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2 @click="demo">浪里行舟</h2>
+    <child-com1 :foo="foo" :boo="boo" :coo="coo" :doo="doo" title="前端工匠"></child-com1>
+  </div>
+</body>
+
+</html>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+  const childCom1 = {
+    template: `
+   <div>
+      <p>foo: {{foo}}</p>
+   <p>childCom1的$attr: {{$attrs}}</p>
+   <p>childCom1的$listeners: {{JSON.stringify($listeners)}}</p>
+   <p>injection : {{name.name}}</p>
+    </div>
+  `,
+    inject: ['name'],
+    // 如果你不希望组件的根元素继承 attribute，你可以在组件的选项中设置
+    inheritAttrs: false,
+    props: {
+      foo: String
+    },
+    created() {
+      console.log('$attr', this.$attrs)
+      console.log('$listeners', this.$listeners);
+      console.log('inject', this.name.name)
+    }
+  }
+  var vm = new Vue({
+    el: "#app",
+    components: { childCom1 },
+    provide() {
+      return {
+        // 如果想要子组件响应式变化   把整个实例传过去
+        name: this
+      }
+    },
+    data() {
+      return {
+        foo: "Javascript",
+        boo: "Html",
+        coo: "CSS",
+        doo: "Vue",
+        name: 'i am you father'
+      }
+    },
+    methods: {
+      demo() {
+        this.name = "i am you son"
+      }
+    }
+  })
+</script>

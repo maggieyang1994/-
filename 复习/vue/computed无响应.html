@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>定义了computed属性 但是如果页面或者js从未使用 不会触发computed中的方法 但其实值是已经变了的</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="changeArr">change arr</button>
+      <!-- {{tagPath}} -->
+    </div>
+  </body>
+</html>
+<script src="https://unpkg.com/vue"></script>
+<script>
+  new Vue({
+    el: "#app",
+    data() {
+      return {
+        arr: [1,2,3],
+      };
+    },
+    computed: {
+      tagPath() {
+        console.log("tagPath change");
+        return this.arr;
+      },
+      firstPath() {
+        console.log("firstPath change");
+        return this.tagPath[1];
+      },
+      secondPath() {
+        console.log("secondPath change");
+        return this.tagPath[2];
+      },
+      tagType() {
+        console.log("tagType change");
+        return this.tagPath[0];
+      },
+    },
+    methods: {
+      changeArr() {
+        console.log("changeArr");
+        this.arr.splice(1,0, 44);
+        console.log(this.arr)
+        // console.log(this.secondPath)
+      },
+    },
+  });
+</script>
