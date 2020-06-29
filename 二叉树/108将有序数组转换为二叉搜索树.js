@@ -55,4 +55,52 @@ var res = {
 
 }
 var result = sortedArrayToBST(num);
-console.log(result)
+
+
+
+// 二叉搜索树   中序遍历为升序数组
+var arr = [-10, -3, 0, 5, 9]
+const again = (arr) => {
+  if (!arr.length) return null;
+  else {
+    // 中间值不能取
+    let mid = Math.floor(arr.length / 2)
+    return {
+      val: arr[mid],
+      left: again(arr.slice(0, mid)),
+      right: again(arr.slice(mid + 1, arr.length))
+    }
+  }
+}
+console.log(again(arr))
+
+// 动态规划  菲波那也
+// 1 1 2 3 5 8 13 21
+const fib = (n) => {
+  let start = performance.now()
+  var res = [1, 1, 2];
+  for (var i = 3; i <= n; i++) {
+    res[i] = res[i - 1] + res[i - 2]
+  }
+  let end = performance.now();
+  console.log(end - start)
+  return res[n]
+}
+console.log(fib(7))
+
+// 缓存fib
+const cache = (n, cacheObj = {}) => {
+  let start = performance.now()
+  if (n === 1 || n === 2) return 1;
+  else {
+    if(cacheObj[n]) return cache[n];
+    else {
+      cacheObj[n] =  cache(n - 1) + cache(n - 2);
+      let end = performance.now();
+      console.log(end - start)
+      return cacheObj[n]
+    }
+    
+  }
+}
+console.log(cache(7))

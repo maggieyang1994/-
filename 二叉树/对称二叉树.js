@@ -65,3 +65,16 @@ const isSame = (left, right) => {
   }
 }
 console.log(isSame(root.left, root.right))
+
+
+
+
+const again = (left, right) => {
+  if(!left && !right) return true;
+  else {
+    if(left.val !== right.val) return false;
+    else {
+      return again(left.left, right.right) && again(left.right, right.left)
+    }
+  }
+}

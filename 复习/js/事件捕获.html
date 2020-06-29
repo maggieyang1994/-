@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div id="s1">
+        s1
+        <div id="s2">s2</div>
+      </div>
+    </div>
+
+    <div>
+      <div id="p1">
+        p1
+        <div id="p2">p2</div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  // s1.addEventListener(
+  //   "click",
+  //   function (e) {
+  //     console.log("s1 冒泡事件");
+  //   },
+  //   false
+  // );
+  // s2.addEventListener(
+  //   "click",
+  //   function (e) {
+  //     console.log("s2 冒泡事件");
+  //   },
+  //   false
+  // );
+
+  // p1.addEventListener(
+  //   "click",
+  //   function (e) {
+  //     console.log("p1 捕获事件");
+  //   },
+  //   true
+  // );
+  // p2.addEventListener(
+  //   "click",
+  //   function (e) {
+  //     console.log("p2 捕获事件");
+  //   },
+  //   true
+  // );
+
+  s1.addEventListener(
+    "click",
+    function (e) {
+      console.log("s1 冒泡事件");
+    },
+    false
+  );
+  s2.addEventListener(
+    "click",
+    function (e) {
+      console.log("s2 冒泡事件");
+    },
+    false
+  );
+
+  s1.addEventListener(
+    "click",
+    function (e) {
+      console.log("s1 捕获事件");
+    },
+    true
+  );
+
+  s2.addEventListener(
+    "click",
+    function (e) {
+      console.log("s2 捕获事件");
+    },
+    true
+  );
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 当父组件需要拿到子组件的值的时候 使用作用域插槽 -->
+      <!-- 子组件bind 数据  父组件v-slot：插槽的名字="形参名字" -->
+      <current-user>
+        <template v-slot:default="slotProps"
+          >{{ slotProps.user.firstName }}</template
+        >
+        <!--  v-slot只能在template中使用 -->
+        <template v-slot:header="slotProps">this is header-{{slotProps.user.lastName}}</template>
+      </current-user>
+    </div>
+  </body>
+</html>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<script>
+  const currentUser = {
+    data() {
+      return {
+        user: {
+          firstName: "maggie",
+          lastName: "yang",
+        },
+      };
+    },
+    template: `
+     <div>
+      <header>
+        <slot name="header" v-bind:user="user"></slot>
+      </header>
+        <slot v-bind:user="user"></slot>
+      </div>
+    `,
+  };
+
+  new Vue({
+    el: "#app",
+    components: { "current-user": currentUser },
+    data() {
+      return {
+        msg: "hello",
+      };
+    },
+    method: {},
+  });
+</script>

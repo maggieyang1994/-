@@ -85,9 +85,9 @@ var addTwoNumbers2 = function (l1, l2) {
     l1 = l1 && l1.next;
     l2 = l2 && l2.next;
     temp.val = num
-    if(!l1 && !l2){
-      temp.next = flag ? {val: 1, next: null}: null
-    }else{
+    if (!l1 && !l2) {
+      temp.next = flag ? { val: 1, next: null } : null
+    } else {
       temp.next = {}
     }
     temp = temp.next
@@ -102,7 +102,7 @@ var addTwoNumbers2 = function (l1, l2) {
   console.log(res)
   return res
 };
-addTwoNumbers2(l1, l2);
+// addTwoNumbers2(l1, l2);
 
 // 如何将数组 变成链表
 const fn = (arr) => {
@@ -134,3 +134,43 @@ const fn2 = (arr) => {
 }
 // fn2([3, 1, 4, 4])
 
+const addTwoNumbersAgain = (l1, l2) => {
+  var res = temp = {}
+  let flag = 0;
+  while (l1 || l2) {
+    let num = ((l1 && l1.val) || 0) + ((l2 && l2.val) || 0) + flag
+    num >= 10 ? (flag = 1, num = num % 10) : flag = 0
+    l1 = l1 && l1.next;
+    l2 = l2 && l2.next;
+    // temp 代表指针 永远指向下一个
+    temp.val = num;
+    temp.next = {};
+    temp = temp.next;
+  }
+  // 处理最后一位进位的情况
+  if (flag) {
+    temp.val = flag;
+    temp.next = null
+  } else {
+    temp = null
+  }
+  console.log(res)
+  return res
+}
+// addTwoNumbersAgain(l1, l2)
+
+
+const list = [1, 2, 3, 4]
+const target = 4;
+
+function fn (list, target) {
+  var hash = {};
+  for(var i =0;i<list.length;i++){
+    let temp = target - list[i];
+    if(hash[temp]) return [hash[temp], i];
+    hash[temp] = i
+  }
+  return null
+};
+
+fn(list, target);

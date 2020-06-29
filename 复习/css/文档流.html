@@ -31,7 +31,10 @@
         padding: 10px;
       }
       .positioned {
-        /* relative 定位 不脱离文档流*/
+        /* relative 定位 不脱离文档流 相对于原来正常的文档流定位*/
+        /* 三种情况  父级 relative, 子 absolute, 那么子始终更具父级定位*/
+        /*  父absolute， 子relative   子的定位会受父内内容的影响  因为relative是不脱离文档流的*/
+        /* relative同级  根据最近的 兄弟节点进行参考*/
         /* position: relative;*/
 
         /* absolute 定位 脱离文档流*/
@@ -39,7 +42,7 @@
         /* position: absolute; */
 
         /* fixed 定位 脱离文档流 */
-        /* 且基于浏览器窗口 定位 */
+        /* 且基于浏览器窗口 定位 不会随着滚动条滚动 */
         position: fixed;
         background: yellow;
         top: 30px;

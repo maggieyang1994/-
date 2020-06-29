@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  var fragment = document.createDocumentFragment();
+  Array.from({ length: 10000 }, (v, i) => i + 1).forEach((x) => {
+    var div = document.createElement("div");
+    div.innerHTML = x;
+    div.style.width = "100px";
+    div.style.height = "100px";
+    div.style.backgroundColor = "red";
+    // document.body.appendChild(div);
+    fragment.appendChild(div);
+  });
+  document.body.appendChild(fragment);
+  // createDocumentFragment只会重排一次  但是事实？
+</script>

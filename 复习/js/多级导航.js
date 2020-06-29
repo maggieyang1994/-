@@ -44,3 +44,22 @@ const getTree = (arr) => {
 };
 var res = getTree(regions);
 console.log(res)
+
+
+const again = (regions) => {
+  let tree = []
+  const map = regions.reduce((o, item) => {
+    o[item.id] =  item;
+    return o
+  })
+  console.log(map);
+  arr.forEach(x => {
+    if(!x.parent){
+      tree.push(x)
+    }else {
+      let parent = map[x.parent]
+
+    }
+  })
+}
+again(regions)

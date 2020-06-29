@@ -24,3 +24,4 @@ const fib1 = (n, cache = [0, 1, 1]) => {
 }
 console.log(fib1(10));
 // hash表
+

@@ -54,11 +54,11 @@ var tree = {
     }
   }
 }
-var invertTree = function(root) {
-  if(!root) return null
-  if(root){
+var invertTree = function (root) {
+  if (!root) return null
+  if (root) {
     return {
-      val: root.node, 
+      val: root.node,
       left: invertTree(root.right),
       right: invertTree(root.left)
     }
@@ -66,3 +66,15 @@ var invertTree = function(root) {
 };
 var res = invertTree(tree);
 console.log(res)
+
+
+const again = (tree) => {
+  if (!tree) return null
+  else {
+    return {
+      val: tree.node,
+      left: again(tree.right),
+      right: again(tree.left)
+    }
+  }
+}

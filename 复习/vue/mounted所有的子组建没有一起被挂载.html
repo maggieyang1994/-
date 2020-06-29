@@ -26,6 +26,7 @@
   Vue.component("async-example", function (resolve, reject) {
     setTimeout(function () {
       // 向 `resolve` 回调传递组件定义
+      // 动态路由
       resolve({
         props: ['msg'],
         template: "<div>I am async! {{msg}}</div>",

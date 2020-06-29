@@ -127,11 +127,36 @@ const reversedKthToTail = (list, k) => {
   kPreNode.next = null;
   let tmp = after;
   // 3
-  while(tmp.next){
+  while (tmp.next) {
     tmp = tmp.next
   }
   tmp.next = list;
-  console.log(after)
 }
 reversedKthToTail(list, 4);
 
+
+// 顺序构造链表
+var arr = [1, 2, 3, 4, 5]
+var zhengxu = (arr) => {
+  let res = temp = {};
+  for (var i = 0; i < arr.length; i++) {
+     temp.val = arr[i];
+     temp.next = {};
+     temp = temp .next
+  }
+  console.log(res)
+}
+
+
+var lixu = (arr) => {
+  // 逆序构造链表
+  var temp = { val: arr[0], next: null };
+  for (let i = 1; i < arr.length; i++) {
+    temp = {
+      val: arr[i],
+      next: temp
+    }
+  }
+  console.log(temp)
+
+}

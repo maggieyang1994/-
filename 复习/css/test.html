@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id='wrapper'>
+    <p></p>
+    
+  </div>
+</body>
+<style>
+  #wrapper{
+     position: relative
+  }
+  #wrapper p {
+     width: 100px;
+     border:1px;
+     position:absolute;
+     left: 50%;
+     transform: translateX(-50%)
+  }
+</style>
+</html>
+<script>
+  function Father(){
+    this.a = 'baba';
+    this.b = [1,2,this.a];
+    this.c = {name: "father"}
+    this.show = function(){
+      console.log(this.a, this.b, this.c.name)
+    }
+  }
+  function Child (){
+    this.a = 'child';
+    this.change = function(){
+      this.b.push(this.a);
+      this.c.name = this.b.length++
+    }
+  }
+  var baba = new Father();
+  // 子类的原型指向父类的实例
+  Child.prototype = new Father();
+  var child1 = new Child();
+  var child2 = new Child();
+  child1.a = 11;
+  child2.a = 12
+  baba.show(); // 'baba', [1,2,'baba'], father
+  child1.show(); // 11, [1,2,'baba'], father
+  child2.show(); // 12, [1,2,'baba'], father
+  child1.change(); 
+  child2.change();
+  baba.show();
+  child1.show();// 11, [1,2,'baba', 11, 12] 6
+  child2.show();// 12, [1,2,'baba', 11, 12] 6
+
+
+  // 两数相加 o(n) 复杂度
+  const twoSum = (arr, target) => {
+    for(var i =0; i<arr.length; i++){
+      for(var j = 0; j< arr.length - i; j++){
+        if(arr[i] + arr[j] === target) return [i, j]
+      }
+    }
+  }
+  console.log(twoSum([1,2,3,4], 4))
+
+
+  
+</script>

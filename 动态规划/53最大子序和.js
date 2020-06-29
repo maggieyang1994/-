@@ -21,7 +21,17 @@ const findArr = (arr) => {
   console.log(res);
   return Math.max(...res)
 }
-findArr(arr);
+// findArr(arr);
 
 
 // 分治法
+
+
+const again = (arr) => {
+  let res = [arr[0]]
+  for(var i = 1;i<arr.length; i++){
+     res.push(Math.max(arr[i], arr[i] + res[i-1]))
+  }
+  console.log(Math.max(...res))
+}
+again(arr)

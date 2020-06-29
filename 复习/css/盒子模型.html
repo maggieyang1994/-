@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 标准盒子模型 border和padding 不会计入内容width宽度 -->
+<!-- IE盒子模型 border和padding 会计入内容width宽度 -->
+<body>
+   <div style="width:100px;overflow:hidden">
+     <div style="width:50px;float: left;background-color:red; border:1px solid blue;box-sizing: border-box">left</div>
+     <div style="width:50px;float: left;background-color:yellow">right</div>
+   </div>
+</body>
+</html>
+<style>
+  div{
+    margin: 0
+  }
+</style>

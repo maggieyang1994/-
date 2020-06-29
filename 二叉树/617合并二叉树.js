@@ -58,3 +58,14 @@ var mergeTrees = function (t1, t2) {
 };
 var res = mergeTrees(t1, t2);
 console.log(res)
+
+const again = (t1, t2) => {
+  if (!t1 && !t2) return null;
+  else {
+    return {
+      val: t1.node + t2.node,
+      left: again(t1.left, t2.left),
+      right:again (t1.right, t2.right)
+    }
+  }
+}

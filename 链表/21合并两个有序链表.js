@@ -51,5 +51,38 @@ var mergeTwoLists = function (l1, l2) {
     }
   }
 };
-let res = mergeTwoLists(l1, l2);
-console.log(res)
+
+// console.log(res)
+
+const mergeTwoListsAgain = (l1, l2) => {
+  let res = temp = {}
+  while (l1 && l2) {
+    if (l1.val < l2.val) {
+      temp.val = l1.val;
+      l1 = l1.next
+    } else {
+      temp.val = l2.val;
+      l2 = l2.next
+    }
+    temp.next = {};
+    temp = temp.next
+  }
+  
+  let temp2 = l1 || l2;
+  if(temp2) {
+    temp.val = temp2.val;
+    temp.next = temp2.next
+  } else temp.next = null
+  console.log(JSON.stringify(res));
+}
+let res = mergeTwoListsAgain(l1, l2);
+
+// const again = (l1, l2) => {
+//   if(!l1 || !l2) return l1 || l2;
+//   else {
+//     let temp = {}
+//     while(l1 || l2){
+//       if(l1.val > l2.val)
+//     }
+//   }
+// }

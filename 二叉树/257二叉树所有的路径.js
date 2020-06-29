@@ -69,9 +69,29 @@ var fn = function (list, temp = [], res = []) {
 // console.log(tempRes)
 var binaryTreePaths = function (list) {
   let res = fn(list);
+  // console.log(res)
   return res.map(x => {
     return x.join("->")
   })
 };
 var res = binaryTreePaths(tree);
-console.log(res)
+// console.log(res)
+// 前序遍历的过程  当left right 为null时  弹出最后一个  并push进去res
+// 前序遍历的应用
+const again = (tree, res = [], temp = []) => {
+  if (!tree) return null;
+  else {
+    temp.push(tree.node)
+    if (tree.left) again(tree.left, res, temp);
+    if (tree.right) again(tree.right, res, temp)
+    if (!tree.left && !tree.right) {
+      res.push(JSON.parse(JSON.stringify(temp)));
+     
+    }
+    temp.pop();
+    return res
+
+  }
+
+}
+console.log(again(tree))

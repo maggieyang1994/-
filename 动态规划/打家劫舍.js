@@ -12,3 +12,10 @@ const theif = (arr) => {
 }
 var res = theif(arr);
 console.log(res)
+
+const again = (arr) => {
+  var res = [arr[i]];
+  for(var i =1;i<arr.length;i++){
+    res[i] = Math.max(res[i-1], arr[i] + (res[i-2] || 0))
+  }
+}

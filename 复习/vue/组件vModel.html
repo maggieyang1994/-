@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <form action="">
+        <input
+          type="checkbox"
+          id="subscribeNews"
+          name="subscribe"
+          value="newsletter"
+        />
+        <label for="subscribeNews">Subscribe to newsletter?</label>
+        <button type="submit">Subscribe</button>
+      </form>
+      <parent v-model="msg"></parent>
+    </div>
+  </body>
+</html>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+  const parent = {
+    //< input type="text" :value="msg"
+    // 如果子组件需要用到value的【data不能与props重名】, 可以用model改变props名和事件名
+    // 父组件标签上会有一个value 属性和input事件，子组件只需要触发父组件的input事件改变就可以了
+    props: ['demo'],
+    model: {
+      prop: 'demo', 
+      event: 'change'
+    },
+    template: `
+     <div>
+        <button @click="handleClick">{{demo}}</button>
+      </div>
+    `,
+    methods: {
+      handleClick() {
+        console.log("haha");
+        // this.$emit("input", "heihei");
+        this.$emit("change", "hee")
+      },
+    },
+  };
+  new Vue({
+    el: "#app",
+    components: { parent },
+    data() {
+      return {
+        msg: "hello",
+      };
+    },
+    method: {},
+  });
+</script>

@@ -22,7 +22,7 @@ var maxDepth = function (root, stack) {
 
 // 只计算左子树
 var maxDep = (root, count = 0) => {
-  if(!root) return count;
+  if (!root) return count;
   count = count + 1
   return Math.max(maxDep(root.left, count), maxDep(root.right, count))
 }
@@ -36,7 +36,56 @@ let root = {
     val: 3
   }
 }
-console.log(maxDep(root))
+// console.log(maxDep(root))
 let stack = [];
 // console.log(maxDepth(root, stack));
 // console.log(stack)
+
+var tree = {
+  val: 1,
+  left: {
+    val: 1,
+    left: {
+      val: 1,
+      left: null,
+      right: null
+    },
+    right: {
+      val: 1,
+      left: null,
+      right: {
+        val: 1,
+        left: {
+          val: 1,
+          left: null,
+          right: null
+        },
+        right: {
+          val: 1,
+          left: null,
+          right: null
+        }
+      }
+    }
+  },
+  right: {
+    val: 2,
+    left: {
+      val: 1,
+      left: null,
+      right: null
+    },
+    right: {
+      val: 1,
+      left: null,
+      right: null
+    }
+  }
+}
+const again = (tree) => {
+  if (!tree) return 0;
+  else {
+    return 1 + Math.max(again(tree.left), again(tree.right))
+  }
+}
+console.log(again(tree))

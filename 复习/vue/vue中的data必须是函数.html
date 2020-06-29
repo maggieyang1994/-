@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <child1></child1>
+     <hr/>
+      <child1></child1>
+    </div>
+  </body>
+</html>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- 如果组件data是个对象  会报错
+    而且如果这个组件在多处使用了 就会共用一个对象 会互相影响
+    如果是个function就会调用 返回一个新的对象
+-->
+<script>
+  var obj = {
+    a: "hello",
+    b: "world",
+  };
+  const child1 = {
+    data(){
+      return obj
+    },
+    template: `
+     <div>
+        <button @click="handleClick">{{a}} {{b}}</button>
+      </div>
+    `,
+    methods: {
+      handleClick() {
+        this.a = "byebye";
+      },
+    },
+  };
+ 
+  new Vue({
+    el: "#app",
+    components: { child1 },
+    data() {
+      return {
+        msg: "hello",
+      };
+    },
+    method: {},
+  });
+</script>
